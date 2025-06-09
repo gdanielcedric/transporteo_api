@@ -1,6 +1,6 @@
 ﻿namespace Transporteo.Models.Entities
 {
-    public class Transaction
+    public class Transaction : BaseEntity
     {
         public required string TicketId { get; set; }
         public required string PaymentMethodId { get; set; }
