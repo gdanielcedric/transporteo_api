@@ -5,7 +5,6 @@ using Transporteo.Services.Interfaces;
 
 namespace Transporteo.Controllers
 {
-    [Authorize(Roles = "admin")]
     [ApiController]
     [Route("api/admin/lignes")]
     public class LigneController : ControllerBase
@@ -31,13 +30,15 @@ namespace Transporteo.Controllers
             return ligne == null ? NotFound() : Ok(ligne);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
-        public async Task<ActionResult<LigneDto>> Create([FromBody] LigneCreateDto dto)
+        public async Task<IActionResult> Create([FromBody] LigneCreateDto dto)
         {
             var created = await _ligneService.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetById), created);
+            return Ok(created);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] LigneCreateDto dto)
         {
@@ -45,6 +46,7 @@ namespace Transporteo.Controllers
             return updated ? NoContent() : NotFound();
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

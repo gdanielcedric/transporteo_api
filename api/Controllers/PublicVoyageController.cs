@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Transporteo.DTOs.Ligne;
 using Transporteo.DTOs.Voyage;
 using Transporteo.Services.Interfaces;
 
 namespace api.Controllers
 {
+    [Authorize(Roles = "client")]
     [ApiController]
     [Route("api/mobile/public")]
     public class PublicVoyageController : ControllerBase

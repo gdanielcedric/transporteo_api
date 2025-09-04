@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Transporteo.DTOs.Reservation;
 using Transporteo.Services.Interfaces;
 
 namespace api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/mobile/reservations")]
     public class ReservationMobileController : ControllerBase

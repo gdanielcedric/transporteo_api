@@ -32,10 +32,10 @@ namespace Transporteo.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ChauffeurDto>> Create([FromBody] ChauffeurCreateDto dto)
+        public async Task<IActionResult> Create([FromBody] ChauffeurCreateDto dto)
         {
             var created = await _chauffeurService.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetById), created);
+            return Ok(created);
         }
 
         [HttpPut("{id}")]

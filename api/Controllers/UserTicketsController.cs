@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Transporteo.Services.Interfaces;
 
 namespace Transporteo.Controllers
 {
+    [Authorize(Roles = "client")]
     [Route("api/mobile/tickets")]
     [ApiController]
     public class UserTicketsController : ControllerBase

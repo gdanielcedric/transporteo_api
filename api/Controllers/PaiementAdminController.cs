@@ -1,9 +1,11 @@
 ﻿using api.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Transporteo.DTOs.Paiement;
 
 namespace Transporteo.Controllers
 {
+    [Authorize(Roles = "admin")]
     [ApiController]
     [Route("api/admin/paiements")]
     public class PaiementAdminController : ControllerBase

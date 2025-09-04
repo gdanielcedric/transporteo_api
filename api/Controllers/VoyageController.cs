@@ -5,7 +5,7 @@ using Transporteo.Services.Interfaces;
 
 namespace Transporteo.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize]
     [ApiController]
     [Route("api/admin/voyages")]
     public class VoyageController : ControllerBase
@@ -29,10 +29,10 @@ namespace Transporteo.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<VoyageDto>> Create([FromBody] VoyageCreateDto dto)
+        public async Task<IActionResult> Create([FromBody] VoyageCreateDto dto)
         {
             var created = await _voyageService.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetById), created);
+            return Ok(created);
         }
 
         [HttpPut("{id}")]
